@@ -3,300 +3,1169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fort Groen — Gastenverblijven op de hoeve in Sint-Truiden</title>
+<meta name="description" content="Fort Groen: rustige gastenverblijven op een authentieke vierkantshoeve in Sint-Truiden. De Loft voor 2 personen en Het Gastenhuis tot 6 personen. Boek rechtstreeks bij ons.">
+<link rel="icon" type="image/png" href="favicon.png">
 
-<title>Fort Groen | Gastenlogies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Lightbox2 (foto's vergroten bij klikken) -->
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
 
 <style>
+/* ============ KLEUREN & BASIS ============ */
+:root{
+    --dark:#3f5546;          /* zacht bosgroen */
+    --dark-soft:#4e6555;
+    --cream:#f7f7f2;         /* achtergrond */
+    --card:#fcfcf8;
+    --line:#e3e7da;
+    --text:#333;
+    --muted:#6a7163;
+    --accent:#6f8a5e;        /* zacht mosgroen (i.p.v. goud bij Fort Maine Coon) */
+    --accent-light:#b3c6a0;  /* zacht lichtgroen */
+    --radius:14px;
+    --shadow:0 10px 30px rgba(63,85,70,0.12);
+    --shadow-soft:0 6px 18px rgba(63,85,70,0.07);
+    --max:1080px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
-font-family:Arial, sans-serif;
-margin:0;
-background:#f6f7f4;
-color:#333;
+    margin:0;
+    font-family:'Source Sans 3',Georgia,serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
 }
 
-header{
-background:#2f4f3f;
-color:white;
-padding:80px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:42px;
-margin-bottom:10px;
-}
-
-nav{
-background:white;
-text-align:center;
-padding:15px;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
-
-nav a{
-margin:0 15px;
-text-decoration:none;
-color:#2f4f3f;
-font-weight:bold;
-}
-
-section{
-max-width:1000px;
-margin:auto;
-padding:60px 20px;
+h1,h2,h3{
+    font-family:'Playfair Display',Georgia,serif;
+    color:var(--dark);
+    margin:0 0 .4em;
+    letter-spacing:.2px;
 }
 
 h2{
-color:#2f4f3f;
-margin-bottom:20px;
+    font-size:clamp(28px,3.2vw,36px);
+    font-weight:600;
+    text-align:center;
+    position:relative;
+    padding-bottom:22px;
+    margin-bottom:42px;
 }
 
-.cards{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
+/* boogje onder titels — echo van de boog in het logo */
+h2::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:70px;
+    height:14px;
+    transform:translateX(-50%);
+    border-bottom:2px solid var(--accent-light);
+    border-radius:50%;
 }
 
+h3{font-size:22px;font-weight:600;}
+
+a{color:var(--accent);}
+a:hover{color:var(--dark);}
+img{max-width:100%;}
+
+.eyebrow{
+    display:block;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+/* ============ HEADER / NAVIGATIE ============ */
+.site-header{
+    background:var(--dark);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.18);
+}
+
+.nav-wrap{
+    max-width:1240px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 24px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:#fff;
+}
+
+.brand img{height:46px;width:auto;}
+
+.brand-text{display:flex;flex-direction:column;line-height:1.15;}
+
+.brand-text strong{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+.brand-text span{
+    font-size:10.5px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    color:var(--accent-light);
+}
+
+nav.main-nav{display:flex;align-items:center;gap:30px;}
+
+nav.main-nav a{
+    text-decoration:none;
+    color:#eef1e8;
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:.3px;
+    position:relative;
+    padding:6px 0;
+}
+
+nav.main-nav a::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:2px;
+    background:var(--accent-light);
+    transform:scaleX(0);
+    transition:transform .25s ease;
+}
+
+nav.main-nav a:hover{color:#fff;}
+nav.main-nav a:hover::after{transform:scaleX(1);}
+
+nav.main-nav a.nav-cta{
+    background:var(--accent);
+    padding:8px 20px;
+    border-radius:999px;
+}
+nav.main-nav a.nav-cta::after{display:none;}
+nav.main-nav a.nav-cta:hover{background:var(--accent-light);color:var(--dark);}
+
+.menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:26px;
+    cursor:pointer;
+}
+
+@media(max-width:940px){
+    nav.main-nav{
+        position:absolute;
+        top:100%;
+        left:0;right:0;
+        background:var(--dark-soft);
+        flex-direction:column;
+        align-items:flex-start;
+        padding:10px 24px 18px;
+        gap:14px;
+        display:none;
+    }
+    nav.main-nav.open{display:flex;}
+    .menu-toggle{display:block;}
+}
+
+/* ============ AANKONDIGINGSBALK ============ */
+.announcement-bar{
+    background:linear-gradient(90deg,var(--accent) 0%,#80997a 100%);
+    color:#fff;
+    text-align:center;
+    padding:12px 20px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.2px;
+}
+.announcement-bar a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+.announcement-bar .leaf{margin:0 6px;font-size:16px;}
+
+/* ============ HERO SLIDESHOW ============ */
+.hero{
+    position:relative;
+    height:80vh;
+    min-height:520px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--dark); /* zichtbaar zolang er nog geen foto's zijn */
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1.2s ease-in-out;
+}
+.slide.active{opacity:1;}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(40,56,45,.52) 0%,rgba(40,56,45,.32) 45%,rgba(40,56,45,.62) 100%);
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#fff;
+    padding:0 24px;
+    max-width:760px;
+}
+
+.hero-logo{
+    width:min(340px,70vw);
+    height:auto;
+    display:block;
+    margin:0 auto 18px;
+    filter:drop-shadow(0 4px 18px rgba(0,0,0,.45));
+}
+
+/* titel blijft in de code voor zoekmachines, maar het logo toont hem al */
+.sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);border:0;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#eef1e8;
+    margin:0 0 28px;
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+.slide-dots{
+    position:absolute;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    z-index:3;
+}
+.slide-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.45);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background .3s ease, transform .3s ease;
+}
+.slide-dot.active{background:#fff;transform:scale(1.3);}
+
+/* ============ KNOPPEN ============ */
+.btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    padding:14px 32px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:.4px;
+    border:1px solid var(--accent);
+    cursor:pointer;
+    font-family:'Source Sans 3',sans-serif;
+    transition:background .2s ease, color .2s ease, transform .2s ease, border-color .2s ease;
+}
+.btn:hover{background:var(--dark);border-color:var(--dark);color:#fff;transform:translateY(-2px);}
+
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;}
+.btn-outline:hover{background:#fff;color:var(--dark);border-color:#fff;}
+
+/* ============ SECTIES ============ */
+.band{width:100%;}
+.band.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+section{
+    max-width:var(--max);
+    margin:auto;
+    padding:84px 24px;
+}
+
+.lede{
+    text-align:center;
+    max-width:680px;
+    margin:-18px auto 40px;
+    color:var(--muted);
+    font-size:17px;
+}
+
+.intro-text{max-width:780px;margin:0 auto;font-size:16.5px;line-height:1.85;}
+.intro-text p{margin:0 0 16px;}
+
+/* ============ LOGIES ============ */
+.stay{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+    margin-bottom:72px;
+}
+.stay:last-child{margin-bottom:0;}
+.stay.reverse .stay-img{order:2;}
+
+.stay-img{position:relative;}
+
+.stay-img img.main{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+    display:block;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:6px solid #fff;
+    background:var(--line);
+}
+
+.stay-tag{
+    position:absolute;
+    top:18px;left:18px;
+    background:var(--dark);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.6px;
+    padding:6px 14px;
+    border-radius:999px;
+}
+
+.stay-info h3{font-size:30px;margin-bottom:10px;}
+
+.stay-details{
+    margin:18px 0 22px;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    list-style:none;
+}
+.stay-details li{
+    padding:4px 0 4px 26px;
+    position:relative;
+}
+.stay-details li::before{
+    content:"";
+    position:absolute;
+    left:4px;top:13px;
+    width:9px;height:9px;
+    border-radius:50% 0 50% 0;  /* blaadje */
+    background:var(--accent);
+}
+
+.extra-photos{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.extra-photos img{
+    width:84px;height:84px;
+    object-fit:cover;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    cursor:pointer;
+    background:var(--line);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+.extra-photos img:hover{transform:scale(1.08);box-shadow:0 10px 22px rgba(0,0,0,0.18);}
+
+@media(max-width:860px){
+    .stay{grid-template-columns:1fr;gap:26px;}
+    .stay.reverse .stay-img{order:0;}
+    .stay-img img.main{height:260px;}
+}
+
+/* ============ KAARTEN (algemeen) ============ */
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
 .card{
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-flex:1;
-min-width:280px;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 26px;
+    box-shadow:var(--shadow-soft);
+}
+.band.alt .card{background:#fff;}
+.card h3{font-size:19px;margin-bottom:12px;color:var(--accent);}
+.card p:last-child{margin-bottom:0;}
+.card .icon{font-size:28px;line-height:1;margin-bottom:14px;display:block;}
+
+.soon{
+    display:inline-block;
+    margin-top:6px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:#f0f3ea;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:3px 12px;
 }
 
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
+.card-grid.two{grid-template-columns:repeat(2,1fr);}
+@media(max-width:860px){.card-grid{grid-template-columns:1fr;}}
+
+/* ============ BESCHIKBAARHEID & BOEKEN ============ */
+.cal-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:22px;flex-wrap:wrap;}
+.cal-tab{
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--dark);
+    padding:10px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14.5px;
+    cursor:pointer;
+    font-family:'Source Sans 3',sans-serif;
+}
+.cal-tab.active{background:var(--dark);color:#fff;border-color:var(--dark);}
+
+.cal-frame{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-soft);
+    overflow:hidden;
+    min-height:460px;
+}
+.cal-frame iframe{width:100%;height:560px;border:0;display:block;}
+
+.cal-placeholder{
+    min-height:460px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 24px;
+    color:var(--muted);
+}
+.cal-placeholder strong{font-family:'Playfair Display',Georgia,serif;font-size:22px;color:var(--dark);font-weight:600;margin-bottom:8px;}
+
+.cal-legend{
+    display:flex;justify-content:center;gap:22px;flex-wrap:wrap;
+    margin:16px 0 0;font-size:14px;color:var(--muted);
+}
+.cal-legend span::before{
+    content:"";display:inline-block;width:11px;height:11px;border-radius:3px;
+    margin-right:7px;vertical-align:-1px;
+}
+.cal-legend .busy::before{background:var(--dark);}
+.cal-legend .free::before{background:#fff;border:1px solid var(--line);}
+
+.booking-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:48px;
+    align-items:start;
+    margin-top:64px;
 }
 
-.card-content{
-padding:20px;
+.why-direct{
+    background:var(--dark);
+    color:#eef1e8;
+    border-radius:var(--radius);
+    padding:34px 30px;
+}
+.why-direct h3{color:#fff;}
+.why-direct ul{margin:0;padding-left:20px;}
+.why-direct li{margin-bottom:8px;}
+.why-direct .small{font-size:14px;color:#c9d1c0;margin-top:18px;}
+
+@media(max-width:860px){.booking-grid{grid-template-columns:1fr;}}
+
+/* ============ FORMULIEREN ============ */
+form{display:flex;flex-direction:column;gap:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+
+form label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
 }
 
-button{
-background:#2f4f3f;
-color:white;
-border:none;
-padding:12px 20px;
-margin-top:10px;
-cursor:pointer;
-border-radius:5px;
+form input,form textarea,form select{
+    width:100%;
+    padding:13px 16px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:'Source Sans 3',sans-serif;
+    font-size:15px;
+    background:#fff;
+    color:var(--text);
 }
-
-button:hover{
-background:#1f3529;
+form input:focus,form textarea:focus,form select:focus{
+    outline:none;
+    border-color:var(--accent-light);
+    box-shadow:0 0 0 3px rgba(179,198,160,0.30);
 }
+form .btn{align-self:flex-start;}
+.form-note{font-size:13.5px;color:var(--muted);margin:-4px 0 0;}
 
+/* ============ ACTUEEL ============ */
+.updates-list{display:flex;flex-direction:column;gap:28px;max-width:860px;margin:auto;}
+.update-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    box-shadow:var(--shadow-soft);
+}
+.band.alt .update-card{background:#fff;}
+.update-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.update-date{
+    background:var(--accent);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.4px;
+    padding:5px 14px;
+    border-radius:999px;
+}
+.update-card h4{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:21px;
+    font-weight:600;
+    color:var(--dark);
+    margin:0;
+}
+.update-text{margin:0 0 14px;}
+.update-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+.update-photos img{
+    width:100%;height:130px;object-fit:cover;border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);display:block;background:var(--line);
+}
+.updates-empty{text-align:center;color:var(--muted);font-style:italic;}
+
+/* ============ FOTOGALERIJ ============ */
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:12px;
 }
-
 .gallery img{
-width:100%;
-border-radius:8px;
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    cursor:pointer;
+    display:block;
+    background:var(--line);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+.gallery img:hover{transform:scale(1.04);box-shadow:0 10px 22px rgba(0,0,0,0.18);}
+@media(max-width:600px){
+    .gallery{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+    .gallery img{height:130px;}
 }
 
+/* ============ CONTACT ============ */
+.contact-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:56px;
+    align-items:start;
+}
+.contact-info-card{
+    background:var(--dark);
+    color:#eef1e8;
+    border-radius:var(--radius);
+    padding:36px 32px;
+}
+.contact-info-card h3{color:#fff;}
+.contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;font-size:15px;}
+.contact-row svg{flex:0 0 18px;margin-top:3px;color:var(--accent-light);}
+.contact-row a{color:#eef1e8;text-decoration:none;}
+.contact-row a:hover{color:var(--accent-light);}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+
+/* ============ FOOTER ============ */
 footer{
-background:#2f4f3f;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:40px;
+    background:var(--dark);
+    color:#d3dacb;
+    padding:60px 24px 28px;
 }
-
+.footer-inner{
+    max-width:var(--max);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+}
+.footer-brand{flex:1 1 260px;}
+.footer-brand img{width:190px;height:auto;display:block;margin-bottom:12px;opacity:.95;}
+.footer-brand span{font-size:13.5px;color:#a9b3a0;}
+.footer-links{flex:1 1 160px;}
+.footer-links h4{color:#fff;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;margin:0 0 14px;}
+.footer-links a{display:block;color:#d3dacb;text-decoration:none;font-size:14.5px;margin-bottom:10px;}
+.footer-links a:hover{color:var(--accent-light);}
+.footer-bottom{
+    max-width:var(--max);
+    margin:42px auto 0;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.12);
+    text-align:center;
+    font-size:13px;
+    color:#a9b3a0;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-
-<h1>Fort Groen</h1>
-<p>Rustige gastenlogies midden in het groen</p>
-
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="#" class="brand">
+      <img src="logo-icon-wit.png" alt="Fort Groen schild">
+      <span class="brand-text">
+        <strong>Fort Groen</strong>
+        <span>Gastenverblijven</span>
+      </span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#welkom">Welkom</a>
+      <a href="#logies">Logies</a>
+      <a href="#hoeve">Op de hoeve</a>
+      <a href="#omgeving">Omgeving</a>
+      <a href="#fotos">Foto's</a>
+      <a href="#contact">Contact</a>
+      <a href="#boeken" class="nav-cta">Beschikbaarheid</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
+<!-- Aankondigingsbalk: pas de tekst aan of verwijder dit blok -->
+<div class="announcement-bar">
+  <span class="leaf">🌿</span>
+  Nieuw: boek voortaan rechtstreeks bij ons. <a href="#boeken">Bekijk de beschikbaarheid.</a>
+  <span class="leaf">🌿</span>
+</div>
 
-<a href="#logies">Logies</a>
-<a href="#omgeving">Omgeving</a>
-<a href="#foto">Foto's</a>
-<a href="#boeken">Boeken</a>
-<a href="#contact">Contact</a>
+<!-- ======================= HERO ======================= -->
+<div class="hero" id="heroSlideshow">
+  <!-- Achtergrondfoto's: zet de bestanden in dezelfde map en pas de namen aan -->
+  <div class="slide active" style="background-image:url('foto1.jpg')"></div>
+  <div class="slide" style="background-image:url('loft.jpg')"></div>
+  <div class="slide" style="background-image:url('gastenhuis.jpg')"></div>
+  <div class="slide" style="background-image:url('foto2.jpg')"></div>
+  <div class="slide" style="background-image:url('foto3.jpg')"></div>
 
-</nav>
+  <div class="hero-overlay"></div>
 
+  <div class="hero-content">
+    <img class="hero-logo" src="logo-fort-groen-wit.png" alt="Fort Groen — Gastenverblijven">
+    <h1 class="sr-only">Fort Groen — Gastenverblijven</h1>
+    <p>Gastenverblijven op een authentieke vierkantshoeve, midden in het groen van Sint-Truiden</p>
+    <div class="hero-buttons">
+      <a href="#boeken" class="btn">Bekijk beschikbaarheid</a>
+      <a href="#logies" class="btn btn-outline">Ontdek de logies</a>
+    </div>
+  </div>
 
+  <div class="slide-dots" id="slideDots"></div>
+</div>
+
+<!-- ======================= WELKOM ======================= -->
+<div class="band alt">
+<section id="welkom">
+  <span class="eyebrow">Welkom</span>
+  <h2>Even tot rust komen</h2>
+  <div class="intro-text">
+    <p>Welkom bij Fort Groen. Op onze hoeve in Sint-Truiden bieden wij twee gastenverblijven aan, elk met een eigen karakter: de intieme Loft voor twee en het ruime Gastenhuis voor families en kleine groepen.</p>
+    <p>Fort Groen is meer dan een logeeradres. Rondom de verblijven leven onze dieren en planten, groeit het voedselbos en is er ruimte voor ambachten. Je logeert dus echt op een levende hoeve — landelijk en toch vlak bij de stad.</p>
+  </div>
+</section>
+</div>
+
+<!-- ======================= LOGIES ======================= -->
 <section id="logies">
+  <span class="eyebrow">Onze verblijven</span>
+  <h2>Onze logies</h2>
 
-<h2>Onze logies</h2>
+  <!-- DE LOFT -->
+  <div class="stay">
+    <div class="stay-img">
+      <span class="stay-tag">2 personen</span>
+      <a href="loft.jpg" data-lightbox="loft" data-title="De Loft"><img class="main" src="loft.jpg" alt="De Loft bij Fort Groen"></a>
+    </div>
+    <div class="stay-info">
+      <h3>De Loft</h3>
+      <p>Een ruime loft met een rustiek karakter. Perfect voor een rustig weekend met twee of een korte vakantie op het platteland.</p>
+      <ul class="stay-details">
+        <li>2 personen — één tweepersoonsbed</li>
+        <li>Volledig ingerichte keuken</li>
+        <li>Stoomdouche</li>
+        <li>Zicht op de kerk en op de binnenplaats</li>
+      </ul>
+      <a href="#boeken" class="btn" data-logie="De Loft">Beschikbaarheid De Loft</a>
+      <!-- Extra foto's: voeg er gerust meer toe -->
+      <div class="extra-photos">
+        <a href="loft-2.jpg" data-lightbox="loft" data-title="De Loft"><img src="loft-2.jpg" alt="De Loft"></a>
+        <a href="loft-3.jpg" data-lightbox="loft" data-title="De Loft"><img src="loft-3.jpg" alt="De Loft"></a>
+        <a href="loft-4.jpg" data-lightbox="loft" data-title="De Loft"><img src="loft-4.jpg" alt="De Loft"></a>
+      </div>
+    </div>
+  </div>
 
-<div class="cards">
-
-<div class="card">
-
-<img src="loft.jpg">
-
-<div class="card-content">
-
-<h3>De Loft</h3>
-
-<p>
-Een lichte en ruime loft.
-Perfect voor een rustig weekend of korte vakantie.
-</p>
-
-<ul>
-<li>2 personen</li>
-<li>Volledig ingerichte keuken</li>
-<li>Stoomdouche</li>
-</ul>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<img src="gastenhuis.jpg">
-
-<div class="card-content">
-
-<h3>Het Gastenhuis</h3>
-
-<p>
-Charmant en gezellig gastenverblijf met sauna.
-Ideaal voor koppels of groepen.
-</p>
-
-<ul>
-<li>tot 6 personen</li>
-<li>Keukenhoek</li>
-<li>Tuinzicht</li>
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
+  <!-- HET GASTENHUIS -->
+  <div class="stay reverse">
+    <div class="stay-img">
+      <span class="stay-tag">tot 6 personen</span>
+      <a href="gastenhuis.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis"><img class="main" src="gastenhuis.jpg" alt="Het Gastenhuis bij Fort Groen"></a>
+    </div>
+    <div class="stay-info">
+      <h3>Het Gastenhuis</h3>
+      <p>Een charmant en gezellig gastenverblijf met sauna en een warme, landelijke sfeer. Ideaal voor koppels, families of kleine groepen.</p>
+      <ul class="stay-details">
+        <li>Tot 6 personen in 3 slaapkamers</li>
+        <li>2 slaapkamers met een tweepersoonsbed</li>
+        <li>1 slaapkamer met 2 eenpersoonsbedden</li>
+        <li>Woonkamer, keuken en badkamer</li>
+        <li>Sauna</li>
+        <li>Zicht op de tuin</li>
+      </ul>
+      <a href="#boeken" class="btn" data-logie="Het Gastenhuis">Beschikbaarheid Gastenhuis</a>
+      <div class="extra-photos">
+        <a href="gastenhuis-2.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis"><img src="gastenhuis-2.jpg" alt="Het Gastenhuis"></a>
+        <a href="gastenhuis-3.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis"><img src="gastenhuis-3.jpg" alt="Het Gastenhuis"></a>
+        <a href="gastenhuis-4.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis"><img src="gastenhuis-4.jpg" alt="Het Gastenhuis"></a>
+      </div>
+    </div>
+  </div>
 </section>
 
-
-<section id="omgeving">
-
-<h2>De omgeving</h2>
-
-<p>
-
-Fort Groen ligt in een groene omgeving,
-perfect om te wandelen, fietsen en tot rust te komen.
-
-Tegelijk liggen gezellige dorpen, natuurgebieden en steden
-op korte afstand.
-
-</p>
-
-</section>
-
-
-<section id="foto">
-
-<h2>Foto's</h2>
-
-<div class="gallery">
-
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-
-</div>
-
-</section>
-
-
+<!-- ======================= BESCHIKBAARHEID & BOEKEN ======================= -->
+<div class="band alt">
 <section id="boeken">
+  <span class="eyebrow">Rechtstreeks boeken</span>
+  <h2>Beschikbaarheid</h2>
+  <p class="lede">Kies een verblijf en bekijk wanneer het vrij is. Vind je een geschikte periode? Stuur ons dan je aanvraag — wij bevestigen zo snel mogelijk persoonlijk.</p>
 
-<h2>Boek je verblijf</h2>
+  <div class="cal-tabs" role="tablist">
+    <button class="cal-tab active" data-cal="loft" role="tab">De Loft</button>
+    <button class="cal-tab" data-cal="gastenhuis" role="tab">Het Gastenhuis</button>
+  </div>
+  <div class="cal-frame" id="calFrame"></div>
+  <div class="cal-legend"><span class="busy">Bezet</span><span class="free">Vrij</span></div>
 
-<div class="cards">
+  <div class="booking-grid">
+    <!-- Boekingsaanvraag. Maak een nieuw formulier aan op formspree.io en vervang JOUW-FORM-ID -->
+    <form id="bookingForm" action="https://formspree.io/f/JOUW-FORM-ID" method="POST">
+      <input type="hidden" name="_subject" value="Nieuwe boekingsaanvraag — Fort Groen">
+      <div>
+        <label for="logie">Verblijf</label>
+        <select id="logie" name="verblijf" required>
+          <option value="De Loft">De Loft (2 personen)</option>
+          <option value="Het Gastenhuis">Het Gastenhuis (tot 6 personen)</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="aankomst">Aankomst</label>
+          <input type="date" id="aankomst" name="aankomst" required>
+        </div>
+        <div>
+          <label for="vertrek">Vertrek</label>
+          <input type="date" id="vertrek" name="vertrek" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="personen">Aantal personen</label>
+          <input type="number" id="personen" name="personen" min="1" max="6" value="2" required>
+        </div>
+        <div>
+          <label for="telefoon">Telefoon</label>
+          <input type="tel" id="telefoon" name="telefoon">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" required>
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div>
+        <label for="bericht">Bericht (optioneel)</label>
+        <textarea id="bericht" name="bericht" rows="4"></textarea>
+      </div>
+      <p class="form-note">Een aanvraag is nog geen definitieve boeking. Wij bevestigen je verblijf persoonlijk per e-mail.</p>
+      <button type="submit" class="btn">Verstuur aanvraag</button>
+    </form>
 
-<div class="card">
-
-<div class="card-content">
-
-<h3>De Loft</h3>
-
-<p>Reserveer de loft via één van onderstaande platforms.</p>
-
-<a href="https://www.airbnb.be/rooms/1468782861060344678?guests=1&adults=1&s=67&unique_share_id=c1c09b17-3b48-4ac7-a160-7c073572ee39T">
-<button>Boek Loft via Airbnb</button>
-</a>
-
-<a href="https://www.booking.com/Share-m6m4QKK">
-<button>Boek Loft via Booking.com</button>
-</a>
-
+    <div class="why-direct">
+      <h3>Waarom rechtstreeks boeken?</h3>
+      <ul>
+        <li>Persoonlijk contact met ons, van aanvraag tot vertrek</li>
+        <li>Vragen of speciale wensen? Die bespreken we gewoon samen</li>
+        <li>Je steunt rechtstreeks onze kleinschalige hoeve</li>
+      </ul>
+      <p class="small">Liever via een boekingsplatform? Geen probleem — onze verblijven blijven ook daar te vinden. De kalender hierboven toont alle reservaties samen.</p>
+    </div>
+  </div>
+</section>
 </div>
-</div>
 
+<!-- ======================= OP DE HOEVE (projecten) ======================= -->
+<section id="hoeve">
+  <span class="eyebrow">Meer dan logeren</span>
+  <h2>Op de hoeve</h2>
+  <p class="lede">Fort Groen is een levende hoeve waar we stap voor stap bouwen aan een duurzaam en zelfvoorzienend geheel. Binnenkort willen we hier ook activiteiten en workshops delen.</p>
 
-<div class="card">
+  <div class="card-grid two">
+    <div class="card">
+      <span class="icon">🐑</span>
+      <h3>De boerderij</h3>
+      <p>Onze schapen grazen tussen de hoogstamfruitbomen in de weide. Daarnaast horen ook konijnen, kippen en kalkoenen bij het dagelijkse leven op de hoeve.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🥕</span>
+      <h3>De groente- en kruidentuin</h3>
+      <p>In onze tuin kweken we seizoensgroenten en kruiden op een natuurlijke manier — vers van de grond tot op het bord.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🌳</span>
+      <h3>Het voedselbos</h3>
+      <p>We leggen een voedselbos aan: een gelaagd, eetbaar landschap van fruitbomen, struiken en vaste planten dat elk jaar rijker wordt.</p>
+      <span class="soon">In de maak</span>
+    </div>
+    <div class="card">
+      <span class="icon">🐈</span>
+      <h3>De cattery</h3>
+      <p>Op de hoeve vind je ook Fort Maine Coon, onze kleinschalige Maine Coon cattery. Onze Maine Coons Sansa en Arya zijn een vertrouwd gezicht op de binnenplaats — grote kans dat ze je tijdens je verblijf even komen begroeten. Meer info op <a href="https://www.fortmainecoon.be" target="_blank">fortmainecoon.be</a>.</p>
+    </div>
+  </div>
 
-<div class="card-content">
-
-<h3>Het Gastenhuis</h3>
-
-<p>Reserveer het gastenhuis via één van onderstaande platforms.</p>
-
-<a href="https://www.airbnb.be/rooms/43217507?guests=1&adults=1&s=67&unique_share_id=2eb974d4-15c0-4d44-a69e-968aa0a01ee5">
-<button>Boek Gastenhuis via Airbnb</button>
-</a>
-
-<a href="https://www.booking.com/Share-u3n2fi">
-<button>Boek Gastenhuis via Booking.com</button>
-</a>
-
-</div>
-</div>
-
-</div>
-  
-
+  <div class="card" style="margin-top:28px;text-align:center;">
+    <h3>Workshops &amp; activiteiten</h3>
+    <p>We dromen van workshops rond permacultuur, moestuinieren, het leven op de boerderij en ambachten. Wil je op de hoogte blijven? <a href="#contact">Laat het ons weten.</a></p>
+    <span class="soon">Binnenkort</span>
+  </div>
 </section>
 
+<!-- ======================= ACTUEEL ======================= -->
+<div class="band alt">
+<section id="actueel">
+  <span class="eyebrow">Nieuws van de hoeve</span>
+  <h2>Actueel</h2>
+  <!-- De berichten komen uit de lijst NIEUWS onderaan deze pagina -->
+  <div class="updates-list" id="updatesList"></div>
+</section>
+</div>
 
+<!-- ======================= OMGEVING ======================= -->
+<section id="omgeving">
+  <span class="eyebrow">Ontdek de streek</span>
+  <h2>De omgeving</h2>
+  <p class="lede">Fort Groen ligt in een groene omgeving — perfect om te wandelen, fietsen en tot rust te komen. Tegelijk liggen gezellige dorpen, natuurgebieden en steden op korte afstand.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="icon">🚲</span>
+      <h3>Fietsen &amp; wandelen</h3>
+      <p>Trek erop uit langs landelijke wegen, boomgaarden en akkers. Ideaal om de streek op je eigen tempo te verkennen.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🍎</span>
+      <h3>Fruitstreek</h3>
+      <p>Sint-Truiden ligt in het hart van Haspengouw, bekend om zijn fruitteelt en vooral prachtig tijdens de bloesemperiode in het voorjaar.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🏛️</span>
+      <h3>Dorpen &amp; steden</h3>
+      <p>Een stadsbezoek, een terrasje of een streekproduct halen? Het centrum van Sint-Truiden en de omliggende dorpen liggen vlakbij.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOTO'S ======================= -->
+<div class="band alt">
+<section id="fotos">
+  <span class="eyebrow">Sfeerbeelden</span>
+  <h2>Foto's</h2>
+  <!-- Voeg foto's toe door een regel te kopiëren en de bestandsnaam aan te passen -->
+  <div class="gallery">
+    <a href="foto1.jpg" data-lightbox="galerij" data-title="Fort Groen"><img src="foto1.jpg" alt="Fort Groen" loading="lazy"></a>
+    <a href="foto2.jpg" data-lightbox="galerij" data-title="Fort Groen"><img src="foto2.jpg" alt="Fort Groen" loading="lazy"></a>
+    <a href="foto3.jpg" data-lightbox="galerij" data-title="Fort Groen"><img src="foto3.jpg" alt="Fort Groen" loading="lazy"></a>
+    <a href="foto4.jpg" data-lightbox="galerij" data-title="Fort Groen"><img src="foto4.jpg" alt="Fort Groen" loading="lazy"></a>
+    <a href="loft.jpg" data-lightbox="galerij" data-title="De Loft"><img src="loft.jpg" alt="De Loft" loading="lazy"></a>
+    <a href="gastenhuis.jpg" data-lightbox="galerij" data-title="Het Gastenhuis"><img src="gastenhuis.jpg" alt="Het Gastenhuis" loading="lazy"></a>
+  </div>
+</section>
+</div>
+
+<!-- ======================= CONTACT ======================= -->
 <section id="contact">
+  <span class="eyebrow">Wij horen graag van je</span>
+  <h2>Contact</h2>
+  <p class="lede">Een vraag over de verblijven, een groepsverblijf of onze toekomstige workshops? Stuur ons gerust een bericht.</p>
 
-<h2>Contact</h2>
+  <div class="contact-grid">
+    <!-- Contactformulier. Gebruik hetzelfde of een apart formspree-formulier -->
+    <form action="https://formspree.io/f/JOUW-FORM-ID" method="POST">
+      <input type="hidden" name="_subject" value="Nieuw bericht via fortgroen website">
+      <div>
+        <label for="c-naam">Naam</label>
+        <input type="text" id="c-naam" name="naam" required>
+      </div>
+      <div>
+        <label for="c-email">E-mail</label>
+        <input type="email" id="c-email" name="email" required>
+      </div>
+      <div>
+        <label for="c-bericht">Bericht</label>
+        <textarea id="c-bericht" name="bericht" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Verstuur</button>
+    </form>
 
-<p>
-
-Fort Groen<br>
-België<br><br>
-
-Email: contact.fortgroen@gmail.com
-
-</p>
-
+    <div class="contact-info-card">
+      <h3>Contactgegevens</h3>
+      <div class="contact-row">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+        <a href="mailto:contact.fortgroen@gmail.com">contact.fortgroen@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+32484850516">+32 484 85 05 16</a>
+      </div>
+      <div class="contact-row">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Sint-Truiden, België</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-
+<!-- ======================= FOOTER ======================= -->
 <footer>
-
-© 2026 Fort Groen
-
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo-fort-groen-wit.png" alt="Fort Groen logo">
+      <span>Gastenverblijven op de hoeve · Sint-Truiden</span>
+    </div>
+    <div class="footer-links">
+      <h4>Navigatie</h4>
+      <a href="#logies">Logies</a>
+      <a href="#boeken">Beschikbaarheid</a>
+      <a href="#hoeve">Op de hoeve</a>
+      <a href="#omgeving">Omgeving</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="mailto:contact.fortgroen@gmail.com">contact.fortgroen@gmail.com</a>
+      <a href="tel:+32484850516">+32 484 85 05 16</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Fort Groen — Sint-Truiden, België
+  </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox-plus-jquery.min.js"></script>
+
+<!-- ========================================================================
+     INSTELLINGEN — DIT ZIJN DE ENIGE STUKKEN DIE JE MOET AANPASSEN
+     ========================================================================
+
+     1) KALENDERS
+     Plak hier de "embed"-link van de Google Agenda per verblijf
+     (Google Agenda > Instellingen van de agenda > "Agenda integreren" >
+     de link uit de insluitcode, het stuk tussen src="...").
+     Zolang de link leeg is ("") toont de website een nette melding.
+
+     2) NIEUWS
+     Om een bericht toe te voegen: kopieer één { ... } blok, plak het
+     bovenaan de lijst en pas de gegevens aan. Bovenste bericht = nieuwste.
+     - date:   bv. "5 november 2026"
+     - title:  korte titel
+     - text:   kort stukje tekst (mag leeg: "")
+     - photos: bestandsnamen tussen [ ], gescheiden door komma's
+               (zet de foto's in dezelfde map als index.html)
+     ======================================================================== -->
+<script>
+const KALENDERS = {
+  loft:       "",   // bv. "https://calendar.google.com/calendar/embed?src=....&ctz=Europe%2FBrussels"
+  gastenhuis: ""
+};
+
+const NIEUWS = [
+  {
+    date: "november 2026",
+    title: "Onze nieuwe website is online",
+    text: "Vanaf nu kan je onze verblijven rechtstreeks bij ons aanvragen. Hier delen we ook nieuws over de hoeve, de groentetuin en het voedselbos in wording.",
+    photos: []
+  },
+];
+</script>
+
+<script>
+/* ============ MENU (mobiel) ============ */
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+menuToggle.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+});
+mainNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', false);
+  });
+});
+
+/* ============ SLIDESHOW ============ */
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('slideDots');
+let current = 0, timer;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+  dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+  dotsContainer.appendChild(dot);
+});
+
+function goTo(n){
+  slides[current].classList.remove('active');
+  dotsContainer.children[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dotsContainer.children[current].classList.add('active');
+}
+function startTimer(){ timer = setInterval(() => goTo(current + 1), 5000); }
+function resetTimer(){ clearInterval(timer); startTimer(); }
+startTimer();
+const hero = document.getElementById('heroSlideshow');
+hero.addEventListener('mouseenter', () => clearInterval(timer));
+hero.addEventListener('mouseleave', startTimer);
+
+/* ============ ONTBREKENDE FOTO'S VERBERGEN ============ */
+/* Kleine foto's die (nog) niet bestaan, worden netjes verborgen */
+document.querySelectorAll('.extra-photos img, .gallery img').forEach(img => {
+  const hide = () => { img.closest('a').style.display = 'none'; };
+  if(img.complete && img.naturalWidth === 0) hide();
+  img.addEventListener('error', hide);
+});
+
+/* ============ KALENDER ============ */
+const calFrame = document.getElementById('calFrame');
+const calTabs = document.querySelectorAll('.cal-tab');
+
+function showCalendar(key){
+  calTabs.forEach(t => t.classList.toggle('active', t.dataset.cal === key));
+  const url = KALENDERS[key];
+  const naam = key === 'loft' ? 'De Loft' : 'Het Gastenhuis';
+  if(url){
+    calFrame.innerHTML = `<iframe src="${url}" title="Beschikbaarheid ${naam}" loading="lazy"></iframe>`;
+  } else {
+    calFrame.innerHTML = `
+      <div class="cal-placeholder">
+        <strong>Kalender ${naam} volgt binnenkort</strong>
+        <span>Stuur ons intussen gerust je gewenste data via het formulier hieronder —<br>we laten snel weten of het verblijf vrij is.</span>
+      </div>`;
+  }
+  // formulier mee laten springen naar het gekozen verblijf
+  document.getElementById('logie').value = naam;
+  document.getElementById('personen').max = key === 'loft' ? 2 : 6;
+}
+calTabs.forEach(t => t.addEventListener('click', () => showCalendar(t.dataset.cal)));
+showCalendar('loft');
+
+/* knoppen bij de logies openen meteen de juiste kalender */
+document.querySelectorAll('[data-logie]').forEach(btn => {
+  btn.addEventListener('click', () => showCalendar(btn.dataset.logie === 'De Loft' ? 'loft' : 'gastenhuis'));
+});
+
+/* ============ DATUMCONTROLE FORMULIER ============ */
+const aankomst = document.getElementById('aankomst');
+const vertrek = document.getElementById('vertrek');
+const vandaag = new Date().toISOString().split('T')[0];
+aankomst.min = vandaag;
+aankomst.addEventListener('change', () => {
+  vertrek.min = aankomst.value;
+  if(vertrek.value && vertrek.value <= aankomst.value) vertrek.value = '';
+});
+document.getElementById('logie').addEventListener('change', e => {
+  showCalendar(e.target.value === 'De Loft' ? 'loft' : 'gastenhuis');
+});
+
+/* ============ NIEUWS ============ */
+function renderNieuws(){
+  const list = document.getElementById('updatesList');
+  if(!NIEUWS.length){
+    list.innerHTML = '<p class="updates-empty">Binnenkort verschijnt hier nieuws van de hoeve.</p>';
+    return;
+  }
+  list.innerHTML = NIEUWS.map((item, i) => {
+    const fotos = (item.photos || []).map((src, j) => `
+      <a href="${src}" data-lightbox="nieuws-${i}" data-title="${item.title}">
+        <img src="${src}" alt="${item.title} — foto ${j+1}" loading="lazy">
+      </a>`).join('');
+    return `
+      <article class="update-card">
+        <div class="update-meta">
+          <span class="update-date">${item.date}</span>
+          <h4>${item.title}</h4>
+        </div>
+        ${item.text ? `<p class="update-text">${item.text}</p>` : ''}
+        ${fotos ? `<div class="update-photos">${fotos}</div>` : ''}
+      </article>`;
+  }).join('');
+}
+renderNieuws();
+</script>
 
 </body>
 </html>
