@@ -651,6 +651,20 @@ footer{
     font-size:13px;
     color:#a9b3a0;
 }
+
+/* ============ TAALKEUZE ============ */
+.lang-switch{display:flex;gap:4px;margin-left:22px;}
+.lang-switch button{
+    background:transparent;border:1px solid rgba(255,255,255,.35);color:#eef1e8;
+    font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.6px;
+    padding:4px 9px;border-radius:999px;cursor:pointer;transition:background .2s ease,color .2s ease;
+}
+.lang-switch button:hover{border-color:var(--accent-light);}
+.lang-switch button.active{background:var(--accent-light);color:var(--dark);border-color:var(--accent-light);}
+.nav-right{display:flex;align-items:center;}
+@media(max-width:940px){
+    .lang-switch{margin-left:0;margin-right:12px;}
+}
 </style>
 </head>
 
@@ -663,26 +677,31 @@ footer{
       <img src="logo-icon-wit.png" alt="Fort Groen schild">
       <span class="brand-text">
         <strong>Fort Groen</strong>
-        <span>Gastenverblijven</span>
+        <span data-i18n="brand_sub">Gastenverblijven</span>
       </span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav class="main-nav" id="mainNav">
-      <a href="#welkom">Welkom</a>
-      <a href="#logies">Logies</a>
-      <a href="#hoeve">Op de hoeve</a>
-      <a href="#omgeving">Omgeving</a>
-      <a href="#fotos">Foto's</a>
+      <a href="#welkom" data-i18n="nav_welkom">Welkom</a>
+      <a href="#logies" data-i18n="nav_logies">Logies</a>
+      <a href="#hoeve" data-i18n="nav_hoeve">Op de hoeve</a>
+      <a href="#omgeving" data-i18n="nav_omgeving">Omgeving</a>
+      <a href="#fotos" data-i18n="nav_fotos">Foto's</a>
       <a href="#contact">Contact</a>
-      <a href="#boeken" class="nav-cta">Beschikbaarheid</a>
+      <a href="#boeken" class="nav-cta" data-i18n="nav_beschik">Beschikbaarheid</a>
     </nav>
+    <div class="lang-switch" id="langSwitch" aria-label="Taal / Langue / Language">
+      <button type="button" data-lang="nl">NL</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </header>
 
 <!-- Aankondigingsbalk: pas de tekst aan of verwijder dit blok -->
 <div class="announcement-bar">
   <span class="leaf">🌿</span>
-  Nieuw: boek voortaan rechtstreeks bij ons. <a href="#boeken">Bekijk de beschikbaarheid.</a>
+  <span data-i18n="announce">Nieuw: boek voortaan rechtstreeks bij ons. <a href="#boeken">Bekijk de beschikbaarheid.</a></span>
   <span class="leaf">🌿</span>
 </div>
 
@@ -702,10 +721,10 @@ footer{
   <div class="hero-content">
     <img class="hero-logo" src="logo-fort-groen-wit.png" alt="Fort Groen — Gastenverblijven">
     <h1 class="sr-only">Fort Groen — Gastenverblijven</h1>
-    <p>Gastenverblijven op een authentieke vierkantshoeve, midden in het groen van Sint-Truiden</p>
+    <p data-i18n="hero_p">Gastenverblijven op een authentieke vierkantshoeve, midden in het groen van Sint-Truiden</p>
     <div class="hero-buttons">
-      <a href="#boeken" class="btn">Bekijk beschikbaarheid</a>
-      <a href="#logies" class="btn btn-outline">Ontdek de logies</a>
+      <a href="#boeken" class="btn" data-i18n="btn_bekijk">Bekijk beschikbaarheid</a>
+      <a href="#logies" class="btn btn-outline" data-i18n="btn_ontdek">Ontdek de logies</a>
     </div>
   </div>
 
@@ -715,46 +734,46 @@ footer{
 <!-- ======================= WELKOM ======================= -->
 <div class="band alt">
 <section id="welkom">
-  <span class="eyebrow">Welkom</span>
-  <h2>Even tot rust komen</h2>
+  <span class="eyebrow" data-i18n="nav_welkom">Welkom</span>
+  <h2 data-i18n="welkom_h2">Even tot rust komen</h2>
   <div class="intro-text">
-    <p>Welkom bij Fort Groen. Op onze hoeve in Sint-Truiden bieden wij twee gastenverblijven aan, elk met een eigen karakter: de intieme Loft voor twee en het ruime Gastenhuis voor families en kleine groepen.</p>
-    <p>Fort Groen is meer dan een logeeradres. Rondom de verblijven leven onze dieren en planten, groeit het voedselbos en is er ruimte voor ambachten. Je logeert dus echt op een levende hoeve — landelijk en toch vlak bij de stad.</p>
+    <p data-i18n="welkom_p1">Welkom bij Fort Groen. Op onze hoeve in Sint-Truiden bieden wij twee gastenverblijven aan, elk met een eigen karakter: de intieme Loft voor twee en het ruime Gastenhuis voor families en kleine groepen.</p>
+    <p data-i18n="welkom_p2">Fort Groen is meer dan een logeeradres. Rondom de verblijven leven onze dieren en planten, groeit het voedselbos en is er ruimte voor ambachten. Je logeert dus echt op een levende hoeve — landelijk en toch vlak bij de stad.</p>
   </div>
 </section>
 </div>
 
 <!-- ======================= LOGIES ======================= -->
 <section id="logies">
-  <span class="eyebrow">Onze verblijven</span>
-  <h2>Onze logies</h2>
+  <span class="eyebrow" data-i18n="logies_eyebrow">Onze verblijven</span>
+  <h2 data-i18n="logies_h2">Onze logies</h2>
 
   <!-- DE LOFT -->
   <div class="stay">
     <div class="stay-img">
-      <span class="stay-tag">2 personen</span>
+      <span class="stay-tag" data-i18n="tag_2">2 personen</span>
       <a href="loft.jpg" data-lightbox="loft" data-title="De Loft — leefruimte onder de oude dakbalken"><img class="main" src="loft.jpg" alt="De Loft bij Fort Groen"></a>
     </div>
     <div class="stay-info">
-      <h3>De Loft</h3>
-      <p>Een ruime loft met een rustiek karakter. Perfect voor een rustig weekend met twee of een korte vakantie op het platteland.</p>
+      <h3 data-i18n="name_loft">De Loft</h3>
+      <p data-i18n="loft_p">Een ruime loft met een rustiek karakter. Perfect voor een rustig weekend met twee of een korte vakantie op het platteland.</p>
       <ul class="stay-details">
-        <li>2 personen — één tweepersoonsbed</li>
-        <li>Volledig ingerichte keuken</li>
-        <li>Stoomdouche</li>
-        <li>Zicht op de kerk en op de binnenplaats</li>
+        <li data-i18n="loft_li1">2 personen — één tweepersoonsbed</li>
+        <li data-i18n="loft_li2">Volledig ingerichte keuken</li>
+        <li data-i18n="loft_li3">Stoomdouche</li>
+        <li data-i18n="loft_li4">Zicht op de kerk en op de binnenplaats</li>
       </ul>
-      <a href="#boeken" class="btn" data-logie="De Loft">Beschikbaarheid De Loft</a>
+      <a href="#boeken" class="btn" data-logie="De Loft" data-i18n="loft_btn">Beschikbaarheid De Loft</a>
       <!-- Extra foto's: voeg er gerust meer toe -->
       <div class="extra-photos">
-        <a href="loft-2.jpg" data-lightbox="loft" data-title="De Loft — de slaaphoek"><img src="loft-2.jpg" alt="De Loft — De slaaphoek"></a>
-        <a href="loft-3.jpg" data-lightbox="loft" data-title="De Loft — de keuken"><img src="loft-3.jpg" alt="De Loft — De keuken"></a>
-        <a href="loft-4.jpg" data-lightbox="loft" data-title="De Loft — de keuken bij avond"><img src="loft-4.jpg" alt="De Loft — De keuken bij avond"></a>
-        <a href="loft-5.jpg" data-lightbox="loft" data-title="De Loft — de stoomdouche"><img src="loft-5.jpg" alt="De Loft — De stoomdouche"></a>
-        <a href="loft-6.jpg" data-lightbox="loft" data-title="De Loft — de badkamer"><img src="loft-6.jpg" alt="De Loft — De badkamer"></a>
-        <a href="loft-7.jpg" data-lightbox="loft" data-title="De Loft — de houten schuifdeur"><img src="loft-7.jpg" alt="De Loft — De houten schuifdeur"></a>
-        <a href="loft-8.jpg" data-lightbox="loft" data-title="De Loft — een hoekje van de loft"><img src="loft-8.jpg" alt="De Loft — Een hoekje van de loft"></a>
-        <a href="loft-9.jpg" data-lightbox="loft" data-title="De Loft — Glasraam met zicht op de binnenplaats"><img src="loft-9.jpg" alt="De Loft — Glasraam met zicht op de binnenplaats"></a>
+        <a href="loft-2.jpg" data-lightbox="loft" data-title="De Loft — de slaaphoek"><img src="loft-2.jpg" alt="De Loft — de slaaphoek"></a>
+        <a href="loft-3.jpg" data-lightbox="loft" data-title="De Loft — de keuken"><img src="loft-3.jpg" alt="De Loft — de keuken"></a>
+        <a href="loft-4.jpg" data-lightbox="loft" data-title="De Loft — de keuken bij avond"><img src="loft-4.jpg" alt="De Loft — de keuken bij avond"></a>
+        <a href="loft-5.jpg" data-lightbox="loft" data-title="De Loft — de stoomdouche"><img src="loft-5.jpg" alt="De Loft — de stoomdouche"></a>
+        <a href="loft-6.jpg" data-lightbox="loft" data-title="De Loft — de badkamer"><img src="loft-6.jpg" alt="De Loft — de badkamer"></a>
+        <a href="loft-7.jpg" data-lightbox="loft" data-title="De Loft — de houten schuifdeur"><img src="loft-7.jpg" alt="De Loft — de houten schuifdeur"></a>
+        <a href="loft-8.jpg" data-lightbox="loft" data-title="De Loft — een hoekje van de loft"><img src="loft-8.jpg" alt="De Loft — een hoekje van de loft"></a>
+        <a href="loft-9.jpg" data-lightbox="loft" data-title="De Loft — Glasraam met zicht op de binnenplaats"><img src="loft-9.jpg" alt="De Loft — glasraam met zicht op de binnenplaats"></a>
       </div>
     </div>
   </div>
@@ -762,22 +781,22 @@ footer{
   <!-- HET GASTENHUIS -->
   <div class="stay reverse">
     <div class="stay-img">
-      <span class="stay-tag">tot 6 personen</span>
+      <span class="stay-tag" data-i18n="tag_6">tot 6 personen</span>
       <a href="gastenhuis.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis — eet- en leefruimte"><img class="main" src="gastenhuis.jpg" alt="Het Gastenhuis bij Fort Groen"></a>
     </div>
     <div class="stay-info">
-      <h3>Het Gastenhuis</h3>
-      <p>Een charmant en gezellig gastenverblijf met sauna en een warme, landelijke sfeer. Ideaal voor koppels, families of kleine groepen.</p>
+      <h3 data-i18n="name_gh">Het Gastenhuis</h3>
+      <p data-i18n="gh_p">Een charmant en gezellig gastenverblijf met sauna en een warme, landelijke sfeer. Ideaal voor koppels, families of kleine groepen.</p>
       <ul class="stay-details">
-        <li>Tot 6 personen in 3 slaapkamers</li>
-        <li>2 slaapkamers met een tweepersoonsbed</li>
-        <li>1 slaapkamer met 2 eenpersoonsbedden</li>
-        <li>Woonkamer, keuken en badkamer</li>
+        <li data-i18n="gh_li1">Tot 6 personen in 3 slaapkamers</li>
+        <li data-i18n="gh_li2">2 slaapkamers met een tweepersoonsbed</li>
+        <li data-i18n="gh_li3">1 slaapkamer met 2 eenpersoonsbedden</li>
+        <li data-i18n="gh_li4">Woonkamer, keuken en badkamer</li>
         <li>Sauna</li>
-        <li>Buitenruimte met zicht op de kerk</li>
-        <li>Zicht op de tuin</li>
+        <li data-i18n="gh_li6">Buitenruimte met zicht op de kerk</li>
+        <li data-i18n="gh_li7">Zicht op de tuin</li>
       </ul>
-      <a href="#boeken" class="btn" data-logie="Het Gastenhuis">Beschikbaarheid Gastenhuis</a>
+      <a href="#boeken" class="btn" data-logie="Het Gastenhuis" data-i18n="gh_btn">Beschikbaarheid Gastenhuis</a>
       <div class="extra-photos">
         <a href="binnenplaats.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis — de buitenruimte met zicht op de kerk"><img src="binnenplaats.jpg" alt="Het Gastenhuis — de buitenruimte met zicht op de kerk"></a>
         <a href="gastenhuis-2.jpg" data-lightbox="gastenhuis" data-title="Het Gastenhuis — de woonkamer met houtkachel"><img src="gastenhuis-2.jpg" alt="Het Gastenhuis — de woonkamer met houtkachel"></a>
@@ -796,74 +815,75 @@ footer{
 <!-- ======================= BESCHIKBAARHEID & BOEKEN ======================= -->
 <div class="band alt">
 <section id="boeken">
-  <span class="eyebrow">Rechtstreeks boeken</span>
-  <h2>Beschikbaarheid</h2>
-  <p class="lede">Kies een verblijf en bekijk wanneer het vrij is. Vind je een geschikte periode? Stuur ons dan je aanvraag — wij bevestigen zo snel mogelijk persoonlijk.</p>
+  <span class="eyebrow" data-i18n="boek_eyebrow">Rechtstreeks boeken</span>
+  <h2 data-i18n="nav_beschik">Beschikbaarheid</h2>
+  <p class="lede" data-i18n="boek_lede">Kies een verblijf en bekijk wanneer het vrij is. Vind je een geschikte periode? Stuur ons dan je aanvraag — wij bevestigen zo snel mogelijk persoonlijk.</p>
 
   <div class="cal-tabs" role="tablist">
-    <button class="cal-tab active" data-cal="loft" role="tab">De Loft</button>
-    <button class="cal-tab" data-cal="gastenhuis" role="tab">Het Gastenhuis</button>
+    <button class="cal-tab active" data-cal="loft" role="tab" data-i18n="name_loft">De Loft</button>
+    <button class="cal-tab" data-cal="gastenhuis" role="tab" data-i18n="name_gh">Het Gastenhuis</button>
   </div>
   <div class="cal-frame" id="calFrame"></div>
-  <div class="cal-legend"><span class="busy">Bezet</span><span class="free">Vrij</span></div>
+  <div class="cal-legend"><span class="busy" data-i18n="cal_busy">Bezet</span><span class="free" data-i18n="cal_free">Vrij</span></div>
 
   <div class="booking-grid">
     <!-- Boekingsaanvraag. Maak een nieuw formulier aan op formspree.io en vervang JOUW-FORM-ID -->
     <form id="bookingForm" action="https://formspree.io/f/xzeeonnl" method="POST">
       <input type="hidden" name="_subject" value="Nieuwe boekingsaanvraag — Fort Groen">
+      <input type="hidden" name="taal" class="lang-field" value="NL">
       <div>
-        <label for="logie">Verblijf</label>
+        <label for="logie" data-i18n="f_verblijf">Verblijf</label>
         <select id="logie" name="verblijf" required>
-          <option value="De Loft">De Loft (2 personen)</option>
-          <option value="Het Gastenhuis">Het Gastenhuis (tot 6 personen)</option>
+          <option value="De Loft" data-i18n="opt_loft">De Loft (2 personen)</option>
+          <option value="Het Gastenhuis" data-i18n="opt_gh">Het Gastenhuis (tot 6 personen)</option>
         </select>
       </div>
       <div class="form-row">
         <div>
-          <label for="aankomst">Aankomst</label>
+          <label for="aankomst" data-i18n="f_aankomst">Aankomst</label>
           <input type="date" id="aankomst" name="aankomst" required>
         </div>
         <div>
-          <label for="vertrek">Vertrek</label>
+          <label for="vertrek" data-i18n="f_vertrek">Vertrek</label>
           <input type="date" id="vertrek" name="vertrek" required>
         </div>
       </div>
       <div class="form-row">
         <div>
-          <label for="personen">Aantal personen</label>
+          <label for="personen" data-i18n="f_personen">Aantal personen</label>
           <input type="number" id="personen" name="personen" min="1" max="6" value="2" required>
         </div>
         <div>
-          <label for="telefoon">Telefoon</label>
+          <label for="telefoon" data-i18n="f_tel">Telefoon</label>
           <input type="tel" id="telefoon" name="telefoon">
         </div>
       </div>
       <div class="form-row">
         <div>
-          <label for="naam">Naam</label>
+          <label for="naam" data-i18n="f_naam">Naam</label>
           <input type="text" id="naam" name="naam" required>
         </div>
         <div>
-          <label for="email">E-mail</label>
+          <label for="email" data-i18n="f_email">E-mail</label>
           <input type="email" id="email" name="email" required>
         </div>
       </div>
       <div>
-        <label for="bericht">Bericht (optioneel)</label>
+        <label for="bericht" data-i18n="f_bericht_opt">Bericht (optioneel)</label>
         <textarea id="bericht" name="bericht" rows="4"></textarea>
       </div>
-      <p class="form-note">Een aanvraag is nog geen definitieve boeking. Wij bevestigen je verblijf persoonlijk per e-mail.</p>
-      <button type="submit" class="btn">Verstuur aanvraag</button>
+      <p class="form-note" data-i18n="f_note">Een aanvraag is nog geen definitieve boeking. Wij bevestigen je verblijf persoonlijk per e-mail.</p>
+      <button type="submit" class="btn" data-i18n="f_send_req">Verstuur aanvraag</button>
     </form>
 
     <div class="why-direct">
-      <h3>Waarom rechtstreeks boeken?</h3>
+      <h3 data-i18n="why_h3">Waarom rechtstreeks boeken?</h3>
       <ul>
-        <li>Persoonlijk contact met ons, van aanvraag tot vertrek</li>
-        <li>Vragen of speciale wensen? Die bespreken we gewoon samen</li>
-        <li>Je steunt rechtstreeks onze kleinschalige hoeve</li>
+        <li data-i18n="why_li1">Persoonlijk contact met ons, van aanvraag tot vertrek</li>
+        <li data-i18n="why_li2">Vragen of speciale wensen? Die bespreken we gewoon samen</li>
+        <li data-i18n="why_li3">Je steunt rechtstreeks onze kleinschalige hoeve</li>
       </ul>
-      <p class="small">Liever via een boekingsplatform? Geen probleem — onze verblijven blijven ook daar te vinden. De kalender hierboven toont alle reservaties samen.</p>
+      <p class="small" data-i18n="why_small">Liever via een boekingsplatform? Geen probleem — onze verblijven blijven ook daar te vinden. De kalender hierboven toont alle reservaties samen.</p>
     </div>
   </div>
 </section>
@@ -871,31 +891,31 @@ footer{
 
 <!-- ======================= OP DE HOEVE (projecten) ======================= -->
 <section id="hoeve">
-  <span class="eyebrow">Meer dan logeren</span>
-  <h2>Op de hoeve</h2>
-  <p class="lede">Fort Groen is een levende hoeve waar we stap voor stap bouwen aan een duurzaam en zelfvoorzienend geheel.</p>
+  <span class="eyebrow" data-i18n="hoeve_eyebrow">Meer dan logeren</span>
+  <h2 data-i18n="nav_hoeve">Op de hoeve</h2>
+  <p class="lede" data-i18n="hoeve_lede">Fort Groen is een levende hoeve waar we stap voor stap bouwen aan een duurzaam en zelfvoorzienend geheel.</p>
 
   <div class="card-grid two">
     <div class="card">
       <span class="icon">🐑</span>
-      <h3>De boerderij</h3>
-      <p>Onze schapen grazen tussen de hoogstamfruitbomen in de weide. Daarnaast horen ook konijnen, kippen en kalkoenen bij het dagelijkse leven op de hoeve.</p>
+      <h3 data-i18n="c_farm_h">De boerderij</h3>
+      <p data-i18n="c_farm_p">Onze schapen grazen tussen de hoogstamfruitbomen in de weide. Daarnaast horen ook konijnen, kippen en kalkoenen bij het dagelijkse leven op de hoeve.</p>
     </div>
     <div class="card">
       <span class="icon">🥕</span>
-      <h3>De groente- en kruidentuin</h3>
-      <p>In onze tuin kweken we seizoensgroenten en kruiden op een natuurlijke manier — vers van de grond tot op het bord.</p>
+      <h3 data-i18n="c_tuin_h">De groente- en kruidentuin</h3>
+      <p data-i18n="c_tuin_p">In onze tuin kweken we seizoensgroenten en kruiden op een natuurlijke manier — vers van de grond tot op het bord.</p>
     </div>
     <div class="card">
       <span class="icon">🌳</span>
-      <h3>Het voedselbos</h3>
-      <p>We leggen een voedselbos aan: een gelaagd, eetbaar landschap van fruitbomen, struiken en vaste planten dat elk jaar rijker wordt.</p>
-      <span class="soon">In de maak</span>
+      <h3 data-i18n="c_bos_h">Het voedselbos</h3>
+      <p data-i18n="c_bos_p">We leggen een voedselbos aan: een gelaagd, eetbaar landschap van fruitbomen, struiken en vaste planten dat elk jaar rijker wordt.</p>
+      <span class="soon" data-i18n="soon_maak">In de maak</span>
     </div>
     <div class="card">
       <span class="icon">🐈</span>
-      <h3>De cattery</h3>
-      <p>Op de hoeve vind je ook Fort Maine Coon, onze kleinschalige Maine Coon cattery. Onze Maine Coons Sansa en Arya zijn een vertrouwd gezicht op de binnenplaats — grote kans dat ze je tijdens je verblijf even komen begroeten. Meer info op <a href="https://www.fortmainecoon.be" target="_blank">fortmainecoon.be</a>.</p>
+      <h3 data-i18n="c_cat_h">De cattery</h3>
+      <p data-i18n="c_cat_p">Op de hoeve vind je ook Fort Maine Coon, onze kleinschalige Maine Coon cattery. Onze Maine Coons Sansa en Arya zijn een vertrouwd gezicht op de binnenplaats — grote kans dat ze je tijdens je verblijf even komen begroeten. Meer info op <a href="https://www.fortmainecoon.be" target="_blank">fortmainecoon.be</a>.</p>
     </div>
   </div>
 </section>
@@ -903,8 +923,8 @@ footer{
 <!-- ======================= ACTUEEL ======================= -->
 <div class="band alt">
 <section id="actueel">
-  <span class="eyebrow">Nieuws van de hoeve</span>
-  <h2>Actueel</h2>
+  <span class="eyebrow" data-i18n="act_eyebrow">Nieuws van de hoeve</span>
+  <h2 data-i18n="act_h2">Actueel</h2>
   <!-- De berichten komen uit de lijst NIEUWS onderaan deze pagina -->
   <div class="updates-list" id="updatesList"></div>
 </section>
@@ -912,25 +932,25 @@ footer{
 
 <!-- ======================= OMGEVING ======================= -->
 <section id="omgeving">
-  <span class="eyebrow">Ontdek de streek</span>
-  <h2>De omgeving</h2>
-  <p class="lede">Fort Groen ligt in een groene omgeving — perfect om te wandelen, fietsen en tot rust te komen. Tegelijk liggen gezellige dorpen, natuurgebieden en steden op korte afstand.</p>
+  <span class="eyebrow" data-i18n="omg_eyebrow">Ontdek de streek</span>
+  <h2 data-i18n="omg_h2">De omgeving</h2>
+  <p class="lede" data-i18n="omg_lede">Fort Groen ligt in een groene omgeving — perfect om te wandelen, fietsen en tot rust te komen. Tegelijk liggen gezellige dorpen, natuurgebieden en steden op korte afstand.</p>
 
   <div class="card-grid">
     <div class="card">
       <span class="icon">🚲</span>
-      <h3>Fietsen &amp; wandelen</h3>
-      <p>Trek erop uit langs landelijke wegen, boomgaarden en akkers. Ideaal om de streek op je eigen tempo te verkennen.</p>
+      <h3 data-i18n="omg_fiets_h">Fietsen &amp; wandelen</h3>
+      <p data-i18n="omg_fiets_p">Trek erop uit langs landelijke wegen, boomgaarden en akkers. Ideaal om de streek op je eigen tempo te verkennen.</p>
     </div>
     <div class="card">
       <span class="icon">🍎</span>
-      <h3>Fruitstreek</h3>
-      <p>Sint-Truiden ligt in het hart van Haspengouw, bekend om zijn fruitteelt en vooral prachtig tijdens de bloesemperiode in het voorjaar.</p>
+      <h3 data-i18n="omg_fruit_h">Fruitstreek</h3>
+      <p data-i18n="omg_fruit_p">Sint-Truiden ligt in het hart van Haspengouw, bekend om zijn fruitteelt en vooral prachtig tijdens de bloesemperiode in het voorjaar.</p>
     </div>
     <div class="card">
       <span class="icon">🏛️</span>
-      <h3>Dorpen &amp; steden</h3>
-      <p>Een stadsbezoek, een terrasje of een streekproduct halen? Het centrum van Sint-Truiden en de omliggende dorpen liggen vlakbij.</p>
+      <h3 data-i18n="omg_dorp_h">Dorpen &amp; steden</h3>
+      <p data-i18n="omg_dorp_p">Een stadsbezoek, een terrasje of een streekproduct halen? Het centrum van Sint-Truiden en de omliggende dorpen liggen vlakbij.</p>
     </div>
   </div>
 </section>
@@ -938,8 +958,8 @@ footer{
 <!-- ======================= FOTO'S ======================= -->
 <div class="band alt">
 <section id="fotos">
-  <span class="eyebrow">Sfeerbeelden</span>
-  <h2>Foto's</h2>
+  <span class="eyebrow" data-i18n="fotos_eyebrow">Sfeerbeelden</span>
+  <h2 data-i18n="nav_fotos">Foto's</h2>
   <!-- Voeg foto's toe door een regel te kopiëren en de bestandsnaam aan te passen -->
   <div class="gallery">
     <a href="sfeer-1.jpg" data-lightbox="galerij" data-title="Fort Groen tussen de bloemenvelden"><img src="sfeer-1.jpg" alt="Fort Groen tussen de bloemenvelden" loading="lazy"></a>
@@ -960,31 +980,32 @@ footer{
 
 <!-- ======================= CONTACT ======================= -->
 <section id="contact">
-  <span class="eyebrow">Wij horen graag van je</span>
+  <span class="eyebrow" data-i18n="contact_eyebrow">Wij horen graag van je</span>
   <h2>Contact</h2>
-  <p class="lede">Een vraag over de verblijven of een groepsverblijf? Stuur ons gerust een bericht.</p>
+  <p class="lede" data-i18n="contact_lede">Een vraag over de verblijven of een groepsverblijf? Stuur ons gerust een bericht.</p>
 
   <div class="contact-grid">
     <!-- Contactformulier. Gebruik hetzelfde of een apart formspree-formulier -->
     <form action="https://formspree.io/f/xvkkljnv" method="POST">
       <input type="hidden" name="_subject" value="Nieuw bericht via fortgroen website">
+      <input type="hidden" name="taal" class="lang-field" value="NL">
       <div>
-        <label for="c-naam">Naam</label>
+        <label for="c-naam" data-i18n="f_naam">Naam</label>
         <input type="text" id="c-naam" name="naam" required>
       </div>
       <div>
-        <label for="c-email">E-mail</label>
+        <label for="c-email" data-i18n="f_email">E-mail</label>
         <input type="email" id="c-email" name="email" required>
       </div>
       <div>
-        <label for="c-bericht">Bericht</label>
+        <label for="c-bericht" data-i18n="f_bericht">Bericht</label>
         <textarea id="c-bericht" name="bericht" rows="5" required></textarea>
       </div>
-      <button type="submit" class="btn">Verstuur</button>
+      <button type="submit" class="btn" data-i18n="f_send">Verstuur</button>
     </form>
 
     <div class="contact-info-card">
-      <h3>Contactgegevens</h3>
+      <h3 data-i18n="contact_h3">Contactgegevens</h3>
       <div class="contact-row">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
         <a href="mailto:contact.fortgroen@gmail.com">contact.fortgroen@gmail.com</a>
@@ -995,7 +1016,7 @@ footer{
       </div>
       <div class="contact-row">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Sint-Truiden, België</span>
+        <span data-i18n="loc">Sint-Truiden, België</span>
       </div>
     </div>
   </div>
@@ -1006,14 +1027,14 @@ footer{
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="logo-fort-groen-wit.png" alt="Fort Groen logo">
-      <span>Gastenverblijven op de hoeve · Sint-Truiden</span>
+      <span data-i18n="foot_brand">Gastenverblijven op de hoeve · Sint-Truiden</span>
     </div>
     <div class="footer-links">
-      <h4>Navigatie</h4>
-      <a href="#logies">Logies</a>
-      <a href="#boeken">Beschikbaarheid</a>
-      <a href="#hoeve">Op de hoeve</a>
-      <a href="#omgeving">Omgeving</a>
+      <h4 data-i18n="foot_nav">Navigatie</h4>
+      <a href="#logies" data-i18n="nav_logies">Logies</a>
+      <a href="#boeken" data-i18n="nav_beschik">Beschikbaarheid</a>
+      <a href="#hoeve" data-i18n="nav_hoeve">Op de hoeve</a>
+      <a href="#omgeving" data-i18n="nav_omgeving">Omgeving</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="footer-links">
@@ -1022,9 +1043,7 @@ footer{
       <a href="tel:+32484850516">+32 484 85 05 16</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    © 2026 Fort Groen — Sint-Truiden, België
-  </div>
+  <div class="footer-bottom"><span data-i18n="foot_bottom">© 2026 Fort Groen — Sint-Truiden, België</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox-plus-jquery.min.js"></script>
@@ -1047,6 +1066,9 @@ footer{
      - text:   kort stukje tekst (mag leeg: "")
      - photos: bestandsnamen tussen [ ], gescheiden door komma's
                (zet de foto's in dezelfde map als index.html)
+     - Vertalingen (optioneel): date_fr, title_fr, text_fr en
+               date_en, title_en, text_en. Laat je ze weg, dan
+               toont de site de Nederlandse tekst.
      ======================================================================== -->
 <script>
 const KALENDERS = {
@@ -1059,11 +1081,275 @@ const NIEUWS = [
     date: "november 2026",
     title: "Onze nieuwe website is online",
     text: "Vanaf nu kan je onze verblijven rechtstreeks bij ons aanvragen. Hier delen we ook nieuws over de hoeve, de groentetuin en het voedselbos in wording.",
+    title_fr: "Notre nouveau site est en ligne",
+    text_fr: "Vous pouvez désormais réserver nos hébergements directement chez nous. Nous partageons aussi ici les nouvelles de la ferme, du potager et de la forêt nourricière en devenir.",
+    title_en: "Our new website is live",
+    text_en: "You can now request our stays directly with us. We will also share news here about the farm, the vegetable garden and the food forest in the making.",
     photos: []
   },
 ];
 </script>
 
+
+<script>
+/* ========================================================================
+   VERTALINGEN (Frans & Engels)
+   De Nederlandse tekst staat gewoon in de pagina hierboven.
+   Pas je een Nederlandse tekst aan? Pas dan hieronder ook de Franse en
+   Engelse versie aan (zelfde sleutelnaam, bv. "loft_p").
+   ======================================================================== */
+const VERTALING = {
+fr: {
+  "nav_welkom": "Bienvenue",
+  "nav_logies": "Hébergements",
+  "nav_hoeve": "À la ferme",
+  "nav_omgeving": "Environs",
+  "nav_fotos": "Photos",
+  "nav_beschik": "Disponibilités",
+  "brand_sub": "Gîtes à la ferme",
+  "hero_p": "Gîtes dans une authentique ferme en carré, au cœur de la verdure de Saint-Trond",
+  "btn_bekijk": "Voir les disponibilités",
+  "btn_ontdek": "Découvrir les hébergements",
+  "welkom_h2": "Prendre le temps de souffler",
+  "welkom_p1": "Bienvenue à Fort Groen. Dans notre ferme à Saint-Trond, nous proposons deux hébergements, chacun avec son propre caractère : le Loft intime pour deux et la spacieuse Maison d'hôtes pour les familles et les petits groupes.",
+  "welkom_p2": "Fort Groen est bien plus qu'une adresse où dormir. Autour des hébergements vivent nos animaux et nos plantes, la forêt nourricière pousse et l'artisanat a sa place. Vous séjournez donc dans une véritable ferme vivante — à la campagne, et pourtant tout près de la ville.",
+  "logies_eyebrow": "Nos hébergements",
+  "logies_h2": "Nos gîtes",
+  "tag_2": "2 personnes",
+  "name_loft": "Le Loft",
+  "loft_p": "Un loft spacieux au caractère rustique. Idéal pour un week-end tranquille à deux ou de courtes vacances à la campagne.",
+  "loft_li1": "2 personnes — un lit double",
+  "loft_li2": "Cuisine entièrement équipée",
+  "loft_li3": "Douche hammam",
+  "loft_li4": "Vue sur l'église et sur la cour intérieure",
+  "loft_btn": "Disponibilités du Loft",
+  "tag_6": "jusqu'à 6 personnes",
+  "name_gh": "La Maison d'hôtes",
+  "gh_p": "Une maison d'hôtes charmante et chaleureuse avec sauna, dans une ambiance champêtre. Idéale pour les couples, les familles ou les petits groupes.",
+  "gh_li1": "Jusqu'à 6 personnes dans 3 chambres",
+  "gh_li2": "2 chambres avec un lit double",
+  "gh_li3": "1 chambre avec 2 lits simples",
+  "gh_li4": "Séjour, cuisine et salle de bain",
+  "gh_li6": "Espace extérieur avec vue sur l'église",
+  "gh_li7": "Vue sur le jardin",
+  "gh_btn": "Disponibilités de la maison d'hôtes",
+  "boek_eyebrow": "Réserver en direct",
+  "boek_lede": "Choisissez un hébergement et consultez ses disponibilités. Vous avez trouvé une période qui vous convient ? Envoyez-nous votre demande — nous vous répondons personnellement dans les plus brefs délais.",
+  "cal_busy": "Occupé",
+  "cal_free": "Libre",
+  "f_verblijf": "Hébergement",
+  "opt_loft": "Le Loft (2 personnes)",
+  "opt_gh": "La Maison d'hôtes (jusqu'à 6 personnes)",
+  "f_aankomst": "Arrivée",
+  "f_vertrek": "Départ",
+  "f_personen": "Nombre de personnes",
+  "f_tel": "Téléphone",
+  "f_naam": "Nom",
+  "f_email": "E-mail",
+  "f_bericht_opt": "Message (facultatif)",
+  "f_note": "Une demande ne constitue pas encore une réservation définitive. Nous vous confirmons votre séjour personnellement par e-mail.",
+  "f_send_req": "Envoyer la demande",
+  "why_h3": "Pourquoi réserver en direct ?",
+  "why_li1": "Un contact personnel avec nous, de la demande jusqu'au départ",
+  "why_li2": "Des questions ou des souhaits particuliers ? Nous en discutons simplement ensemble",
+  "why_li3": "Vous soutenez directement notre petite ferme",
+  "why_small": "Vous préférez passer par une plateforme de réservation ? Pas de problème — nos hébergements y restent disponibles. Le calendrier ci-dessus reprend toutes les réservations.",
+  "hoeve_eyebrow": "Bien plus qu'un séjour",
+  "hoeve_lede": "Fort Groen est une ferme vivante où nous construisons pas à pas un ensemble durable et autosuffisant.",
+  "c_farm_h": "La ferme",
+  "c_farm_p": "Nos moutons pâturent parmi les arbres fruitiers haute-tige de la prairie. Lapins, poules et dindes font eux aussi partie du quotidien de la ferme.",
+  "c_tuin_h": "Le potager et le jardin d'herbes",
+  "c_tuin_p": "Dans notre jardin, nous cultivons des légumes de saison et des herbes aromatiques de façon naturelle — de la terre à l'assiette.",
+  "c_bos_h": "La forêt nourricière",
+  "c_bos_p": "Nous aménageons une forêt nourricière : un paysage comestible en étages, fait d'arbres fruitiers, d'arbustes et de plantes vivaces, qui s'enrichit d'année en année.",
+  "soon_maak": "En cours",
+  "c_cat_h": "La chatterie",
+  "c_cat_p": "À la ferme se trouve aussi Fort Maine Coon, notre petite chatterie de Maine Coons. Nos Maine Coons Sansa et Arya sont des figures familières de la cour intérieure — il y a de fortes chances qu'elles viennent vous saluer pendant votre séjour. Plus d'infos sur <a href=\"https://www.fortmainecoon.be\" target=\"_blank\">fortmainecoon.be</a>.",
+  "act_eyebrow": "Nouvelles de la ferme",
+  "act_h2": "Actualités",
+  "omg_eyebrow": "Découvrez la région",
+  "omg_h2": "Les environs",
+  "omg_lede": "Fort Groen se situe dans un cadre verdoyant — idéal pour marcher, faire du vélo et se ressourcer. Villages charmants, espaces naturels et villes se trouvent à deux pas.",
+  "omg_fiets_h": "Vélo &amp; randonnée",
+  "omg_fiets_p": "Partez à la découverte des routes de campagne, des vergers et des champs. Idéal pour explorer la région à votre rythme.",
+  "omg_fruit_h": "Région fruitière",
+  "omg_fruit_p": "Saint-Trond se trouve au cœur de la Hesbaye, réputée pour ses vergers et particulièrement belle pendant la floraison au printemps.",
+  "omg_dorp_h": "Villages &amp; villes",
+  "omg_dorp_p": "Une visite en ville, une terrasse ou des produits du terroir ? Le centre de Saint-Trond et les villages alentour sont tout proches.",
+  "fotos_eyebrow": "Ambiance",
+  "contact_eyebrow": "Au plaisir de vous lire",
+  "contact_lede": "Une question sur nos hébergements ou un séjour de groupe ? N'hésitez pas à nous écrire.",
+  "f_bericht": "Message",
+  "f_send": "Envoyer",
+  "contact_h3": "Coordonnées",
+  "loc": "Saint-Trond, Belgique",
+  "foot_brand": "Gîtes à la ferme · Saint-Trond",
+  "foot_nav": "Navigation",
+  "announce": "Nouveau : réservez désormais directement chez nous. <a href=\"#boeken\">Voir les disponibilités.</a>",
+  "foot_bottom": "© 2026 Fort Groen — Saint-Trond, Belgique"
+},
+en: {
+  "nav_welkom": "Welcome",
+  "nav_logies": "Accommodation",
+  "nav_hoeve": "On the farm",
+  "nav_omgeving": "Surroundings",
+  "nav_fotos": "Photos",
+  "nav_beschik": "Availability",
+  "brand_sub": "Farm stays",
+  "hero_p": "Guest accommodation on an authentic square farmstead, surrounded by the greenery of Sint-Truiden",
+  "btn_bekijk": "Check availability",
+  "btn_ontdek": "Discover our stays",
+  "welkom_h2": "Time to unwind",
+  "welkom_p1": "Welcome to Fort Groen. On our farm in Sint-Truiden we offer two guest accommodations, each with its own character: the intimate Loft for two and the spacious Guesthouse for families and small groups.",
+  "welkom_p2": "Fort Groen is more than a place to stay. Around the accommodation live our animals and plants, the food forest is growing and there is room for crafts. You really stay on a living farm — rural, yet close to town.",
+  "logies_eyebrow": "Our stays",
+  "logies_h2": "Our accommodation",
+  "tag_2": "2 guests",
+  "name_loft": "The Loft",
+  "loft_p": "A spacious loft with rustic character. Perfect for a quiet weekend for two or a short break in the countryside.",
+  "loft_li1": "2 guests — one double bed",
+  "loft_li2": "Fully equipped kitchen",
+  "loft_li3": "Steam shower",
+  "loft_li4": "View of the church and the inner courtyard",
+  "loft_btn": "Loft availability",
+  "tag_6": "up to 6 guests",
+  "name_gh": "The Guesthouse",
+  "gh_p": "A charming, cosy guesthouse with a sauna and a warm, rural atmosphere. Ideal for couples, families or small groups.",
+  "gh_li1": "Up to 6 guests in 3 bedrooms",
+  "gh_li2": "2 bedrooms with a double bed",
+  "gh_li3": "1 bedroom with 2 single beds",
+  "gh_li4": "Living room, kitchen and bathroom",
+  "gh_li6": "Outdoor area with a view of the church",
+  "gh_li7": "Garden view",
+  "gh_btn": "Guesthouse availability",
+  "boek_eyebrow": "Book direct",
+  "boek_lede": "Choose a stay and see when it is available. Found a period that suits you? Send us your request — we will confirm personally as soon as possible.",
+  "cal_busy": "Booked",
+  "cal_free": "Available",
+  "f_verblijf": "Accommodation",
+  "opt_loft": "The Loft (2 guests)",
+  "opt_gh": "The Guesthouse (up to 6 guests)",
+  "f_aankomst": "Arrival",
+  "f_vertrek": "Departure",
+  "f_personen": "Number of guests",
+  "f_tel": "Phone",
+  "f_naam": "Name",
+  "f_email": "Email",
+  "f_bericht_opt": "Message (optional)",
+  "f_note": "A request is not yet a confirmed booking. We will confirm your stay personally by email.",
+  "f_send_req": "Send request",
+  "why_h3": "Why book direct?",
+  "why_li1": "Personal contact with us, from request to departure",
+  "why_li2": "Questions or special requests? We simply discuss them together",
+  "why_li3": "You directly support our small-scale farm",
+  "why_small": "Prefer a booking platform? No problem — our stays are still listed there too. The calendar above shows all bookings together.",
+  "hoeve_eyebrow": "More than a stay",
+  "hoeve_lede": "Fort Groen is a living farm where, step by step, we are building a sustainable and self-sufficient whole.",
+  "c_farm_h": "The farm",
+  "c_farm_p": "Our sheep graze among the tall standard fruit trees in the meadow. Rabbits, chickens and turkeys are also part of everyday life on the farm.",
+  "c_tuin_h": "The vegetable and herb garden",
+  "c_tuin_p": "In our garden we grow seasonal vegetables and herbs the natural way — fresh from the soil to your plate.",
+  "c_bos_h": "The food forest",
+  "c_bos_p": "We are planting a food forest: a layered, edible landscape of fruit trees, shrubs and perennials that grows richer every year.",
+  "soon_maak": "In progress",
+  "c_cat_h": "The cattery",
+  "c_cat_p": "The farm is also home to Fort Maine Coon, our small-scale Maine Coon cattery. Our Maine Coons Sansa and Arya are a familiar sight in the inner courtyard — chances are they will come and say hello during your stay. More info at <a href=\"https://www.fortmainecoon.be\" target=\"_blank\">fortmainecoon.be</a>.",
+  "act_eyebrow": "News from the farm",
+  "act_h2": "News",
+  "omg_eyebrow": "Explore the region",
+  "omg_h2": "The surroundings",
+  "omg_lede": "Fort Groen lies in green surroundings — perfect for walking, cycling and unwinding. Charming villages, nature areas and towns are all close by.",
+  "omg_fiets_h": "Cycling &amp; walking",
+  "omg_fiets_p": "Head out along country lanes, orchards and fields. Ideal for exploring the region at your own pace.",
+  "omg_fruit_h": "Fruit region",
+  "omg_fruit_p": "Sint-Truiden lies in the heart of Haspengouw (Hesbaye), known for its fruit growing and especially beautiful during blossom season in spring.",
+  "omg_dorp_h": "Villages &amp; towns",
+  "omg_dorp_p": "A city visit, a drink on a terrace or some local produce? The centre of Sint-Truiden and the surrounding villages are close by.",
+  "fotos_eyebrow": "Impressions",
+  "contact_eyebrow": "We'd love to hear from you",
+  "contact_lede": "A question about our stays or a group booking? Feel free to send us a message.",
+  "f_bericht": "Message",
+  "f_send": "Send",
+  "contact_h3": "Contact details",
+  "loc": "Sint-Truiden, Belgium",
+  "foot_brand": "Farm stays · Sint-Truiden",
+  "foot_nav": "Navigation",
+  "announce": "New: you can now book directly with us. <a href=\"#boeken\">Check availability.</a>",
+  "foot_bottom": "© 2026 Fort Groen — Sint-Truiden, Belgium"
+}
+};
+
+/* Extra teksten die door het script zelf worden ingevuld */
+const VERTALING_EXTRA = {
+  nl: {
+    title: "Fort Groen — Gastenverblijven op de hoeve in Sint-Truiden",
+    desc:  "Fort Groen: rustige gastenverblijven op een authentieke vierkantshoeve in Sint-Truiden. De Loft voor 2 personen en Het Gastenhuis tot 6 personen. Boek rechtstreeks bij ons.",
+    cal_soon: "Kalender {naam} volgt binnenkort",
+    cal_soon_txt: "Stuur ons intussen gerust je gewenste data via het formulier hieronder —<br>we laten snel weten of het verblijf vrij is.",
+    cal_title: "Beschikbaarheid {naam}",
+    loft: "De Loft", gh: "Het Gastenhuis",
+    news_empty: "Binnenkort verschijnt hier nieuws van de hoeve.",
+    photo: "foto"
+  },
+  fr: {
+    title: "Fort Groen — Gîtes à la ferme à Saint-Trond",
+    desc:  "Fort Groen : gîtes paisibles dans une authentique ferme en carré à Saint-Trond. Le Loft pour 2 personnes et la Maison d'hôtes jusqu'à 6 personnes. Réservez en direct.",
+    cal_soon: "Le calendrier — {naam} arrive bientôt",
+    cal_soon_txt: "En attendant, envoyez-nous vos dates souhaitées via le formulaire ci-dessous —<br>nous vous dirons rapidement si l'hébergement est libre.",
+    cal_title: "Disponibilités — {naam}",
+    loft: "Le Loft", gh: "La Maison d'hôtes",
+    news_empty: "Bientôt, vous trouverez ici les nouvelles de la ferme.",
+    photo: "photo"
+  },
+  en: {
+    title: "Fort Groen — Farm stays in Sint-Truiden, Belgium",
+    desc:  "Fort Groen: peaceful guest accommodation on an authentic square farmstead in Sint-Truiden. The Loft for 2 guests and the Guesthouse for up to 6. Book direct.",
+    cal_soon: "Calendar for {naam} coming soon",
+    cal_soon_txt: "In the meantime, feel free to send us your preferred dates using the form below —<br>we will quickly let you know whether it is available.",
+    cal_title: "Availability — {naam}",
+    loft: "The Loft", gh: "The Guesthouse",
+    news_empty: "News from the farm will appear here soon.",
+    photo: "photo"
+  }
+};
+
+/* Onderschriften van foto's: elk stukje apart vertaald */
+const FOTO_TEKST = {
+  "De Loft": ["Le Loft","The Loft"],
+  "Het Gastenhuis": ["La Maison d'hôtes","The Guesthouse"],
+  "De Loft bij Fort Groen": ["Le Loft à Fort Groen","The Loft at Fort Groen"],
+  "Het Gastenhuis bij Fort Groen": ["La Maison d'hôtes à Fort Groen","The Guesthouse at Fort Groen"],
+  "leefruimte onder de oude dakbalken": ["séjour sous les anciennes poutres","living space under the old roof beams"],
+  "de slaaphoek": ["le coin nuit","the sleeping area"],
+  "de keuken": ["la cuisine","the kitchen"],
+  "de keuken bij avond": ["la cuisine le soir","the kitchen in the evening"],
+  "de stoomdouche": ["la douche hammam","the steam shower"],
+  "de badkamer": ["la salle de bain","the bathroom"],
+  "de houten schuifdeur": ["la porte coulissante en bois","the wooden sliding door"],
+  "een hoekje van de loft": ["un coin du loft","a corner of the loft"],
+  "Glasraam met zicht op de binnenplaats": ["Vitrail avec vue sur la cour intérieure","Stained-glass window overlooking the courtyard"],
+  "eet- en leefruimte": ["salle à manger et séjour","dining and living area"],
+  "de buitenruimte met zicht op de kerk": ["l'espace extérieur avec vue sur l'église","the outdoor area with a view of the church"],
+  "de woonkamer met houtkachel": ["le séjour avec poêle à bois","the living room with wood stove"],
+  "de sauna": ["le sauna","the sauna"],
+  "een hoekje van de keuken": ["un coin de la cuisine","a corner of the kitchen"],
+  "slaapkamer met tweepersoonsbed": ["chambre avec lit double","bedroom with double bed"],
+  "wastafel in de slaapkamer": ["lavabo dans la chambre","washbasin in the bedroom"],
+  "Fort Groen tussen de bloemenvelden": ["Fort Groen entre les champs fleuris","Fort Groen among the flower fields"],
+  "De hoeve met de schapen en de kerk": ["La ferme avec les moutons et l'église","The farm with the sheep and the church"],
+  "Onze schapen": ["Nos moutons","Our sheep"],
+  "In de schapenstal": ["Dans la bergerie","In the sheep barn"],
+  "De binnenplaats van bovenaf": ["La cour intérieure vue d'en haut","The courtyard from above"],
+  "Zithoek op de binnenplaats": ["Coin salon dans la cour","Seating area in the courtyard"],
+  "De lemen oven": ["Le four en terre","The clay oven"],
+  "Onder de poort": ["Sous le porche","Under the gateway"],
+  "Aan de schuur": ["Près de la grange","By the barn"],
+  "Ladder en pomp aan de gevel": ["Échelle et pompe sur la façade","Ladder and pump on the façade"],
+  "Speelhoek op de binnenplaats": ["Coin de jeux dans la cour","Play corner in the courtyard"],
+  "Glasraam met Sint-Truiden": ["Vitrail de Saint-Trond","Stained glass of Sint-Truiden"],
+  "Fort Groen — Gastenverblijven": ["Fort Groen — Gîtes à la ferme","Fort Groen — Farm stays"]
+};
+</script>
 <script>
 /* ============ MENU (mobiel) ============ */
 const menuToggle = document.getElementById('menuToggle');
@@ -1122,21 +1408,24 @@ function showCalendar(key){
   calTabs.forEach(t => t.classList.toggle('active', t.dataset.cal === key));
   const url = KALENDERS[key];
   const naam = key === 'loft' ? 'De Loft' : 'Het Gastenhuis';
+  const X = VERTALING_EXTRA[taal];
+  const toonNaam = key === 'loft' ? X.loft : X.gh;
   if(url){
-    calFrame.innerHTML = `<iframe src="${url}" title="Beschikbaarheid ${naam}" loading="lazy"></iframe>`;
+    calFrame.innerHTML = `<iframe src="${url}${url.includes('?')?'&':'?'}hl=${taal}" title="${X.cal_title.replace('{naam}',toonNaam)}" loading="lazy"></iframe>`;
   } else {
     calFrame.innerHTML = `
       <div class="cal-placeholder">
-        <strong>Kalender ${naam} volgt binnenkort</strong>
-        <span>Stuur ons intussen gerust je gewenste data via het formulier hieronder —<br>we laten snel weten of het verblijf vrij is.</span>
+        <strong>${X.cal_soon.replace('{naam}',toonNaam)}</strong>
+        <span>${X.cal_soon_txt}</span>
       </div>`;
   }
+  huidigeKalender = key;
   // formulier mee laten springen naar het gekozen verblijf
   document.getElementById('logie').value = naam;
   document.getElementById('personen').max = key === 'loft' ? 2 : 6;
 }
+let huidigeKalender = 'loft';
 calTabs.forEach(t => t.addEventListener('click', () => showCalendar(t.dataset.cal)));
-showCalendar('loft');
 
 /* knoppen bij de logies openen meteen de juiste kalender */
 document.querySelectorAll('[data-logie]').forEach(btn => {
@@ -1160,26 +1449,89 @@ document.getElementById('logie').addEventListener('change', e => {
 function renderNieuws(){
   const list = document.getElementById('updatesList');
   if(!NIEUWS.length){
-    list.innerHTML = '<p class="updates-empty">Binnenkort verschijnt hier nieuws van de hoeve.</p>';
+    list.innerHTML = `<p class="updates-empty">${VERTALING_EXTRA[taal].news_empty}</p>`;
     return;
   }
+  const veld = (item, k) => (taal !== 'nl' && item[k + '_' + taal]) || item[k] || '';
   list.innerHTML = NIEUWS.map((item, i) => {
+    const t = { date: veld(item,'date'), title: veld(item,'title'), text: veld(item,'text') };
     const fotos = (item.photos || []).map((src, j) => `
-      <a href="${src}" data-lightbox="nieuws-${i}" data-title="${item.title}">
-        <img src="${src}" alt="${item.title} — foto ${j+1}" loading="lazy">
+      <a href="${src}" data-lightbox="nieuws-${i}" data-title="${t.title}">
+        <img src="${src}" alt="${t.title} — ${VERTALING_EXTRA[taal].photo} ${j+1}" loading="lazy">
       </a>`).join('');
     return `
       <article class="update-card">
         <div class="update-meta">
-          <span class="update-date">${item.date}</span>
-          <h4>${item.title}</h4>
+          <span class="update-date">${t.date}</span>
+          <h4>${t.title}</h4>
         </div>
-        ${item.text ? `<p class="update-text">${item.text}</p>` : ''}
+        ${t.text ? `<p class="update-text">${t.text}</p>` : ''}
         ${fotos ? `<div class="update-photos">${fotos}</div>` : ''}
       </article>`;
   }).join('');
 }
-renderNieuws();
+
+/* ============ TAAL ============ */
+let taal = 'nl';
+const origineel = new Map();   // bewaart de Nederlandse tekst om terug te kunnen schakelen
+
+function vertaalFoto(tekst, lang){
+  if(lang === 'nl' || !tekst) return tekst;
+  const idx = lang === 'fr' ? 0 : 1;
+  if(FOTO_TEKST[tekst]) return FOTO_TEKST[tekst][idx];
+  return tekst.split(' — ').map(d => FOTO_TEKST[d] ? FOTO_TEKST[d][idx] : d).join(' — ');
+}
+
+function zetTaal(lang){
+  if(!['nl','fr','en'].includes(lang)) lang = 'nl';
+  taal = lang;
+  document.documentElement.lang = lang;
+
+  // gewone teksten
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if(!origineel.has(el)) origineel.set(el, el.innerHTML);
+    const k = el.dataset.i18n;
+    el.innerHTML = lang === 'nl' ? origineel.get(el) : (VERTALING[lang][k] ?? origineel.get(el));
+  });
+
+  // onderschriften en alt-teksten van foto's
+  document.querySelectorAll('[data-title]').forEach(a => {
+    if(!a.dataset.nlTitle) a.dataset.nlTitle = a.getAttribute('data-title');
+    a.setAttribute('data-title', vertaalFoto(a.dataset.nlTitle, lang));
+  });
+  document.querySelectorAll('img[alt]').forEach(img => {
+    if(img.dataset.nlAlt === undefined) img.dataset.nlAlt = img.alt;
+    img.alt = vertaalFoto(img.dataset.nlAlt, lang);
+  });
+
+  // titel en beschrijving van de pagina
+  const X = VERTALING_EXTRA[lang];
+  document.title = X.title;
+  const meta = document.querySelector('meta[name="description"]');
+  if(meta) meta.setAttribute('content', X.desc);
+
+  // knoppen, formulieren, kalender en nieuws
+  document.querySelectorAll('#langSwitch button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-field').forEach(f => f.value = lang.toUpperCase());
+  showCalendar(huidigeKalender);
+  renderNieuws();
+
+  try{ localStorage.setItem('fortgroen-taal', lang); }catch(e){}
+}
+
+document.querySelectorAll('#langSwitch button').forEach(b =>
+  b.addEventListener('click', () => zetTaal(b.dataset.lang)));
+
+/* Startaal: ?lang=fr in de link > eerder gekozen taal > taal van de browser > Nederlands */
+(function(){
+  let start = new URLSearchParams(location.search).get('lang');
+  if(!start){ try{ start = localStorage.getItem('fortgroen-taal'); }catch(e){} }
+  if(!start){
+    const b = (navigator.language || 'nl').slice(0,2).toLowerCase();
+    start = ['fr','en'].includes(b) ? b : 'nl';
+  }
+  zetTaal(start);
+})();
 </script>
 
 </body>
